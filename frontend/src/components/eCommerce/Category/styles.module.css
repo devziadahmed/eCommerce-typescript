@@ -7,9 +7,23 @@
   overflow: hidden;
   border-radius: 50%;
   background-color: #f2f2f2;
+  background-image: url("../../../assets//clothing-category-1.png");
 }
 .categoryImg img {
   width: 100%;
+}
+
+.category h4 {
+  font-weight: 600;
+}
+
+.category a {
+  text-decoration: none;
+  color: #444;
+}
+
+.category a:hover {
+  text-decoration: underline;
 }
 
 .categoryTitle {

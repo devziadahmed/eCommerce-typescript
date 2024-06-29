@@ -5,6 +5,11 @@
   align-items: center;
 }
 
+.headerContainer a {
+  text-decoration: none;
+  color: #444;
+}
+
 .headerLogo {
   color: inherit;
   text-decoration: none;

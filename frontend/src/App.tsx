@@ -21,7 +21,7 @@ const App = () => {
           element: <Categories />,
         },
         {
-          path: "products/:prefix",
+          path: "categories/products/:prefix",
           element: <Product />,
           loader: productLoader,
         },
