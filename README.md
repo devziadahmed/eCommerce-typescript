@@ -39,18 +39,18 @@ It's my first e-commerce project, and it's exposed me to a lot of new and intere
 
 # How to run
 
-frontend:
-
-```shell
- cd frontend
- yarn
- yarn dev
-```
-
 backend:
 
 ```shell
  cd backend
  yarn
  yarn start
+```
+
+frontend:
+
+```shell
+ cd frontend
+ yarn
+ yarn dev
 ```

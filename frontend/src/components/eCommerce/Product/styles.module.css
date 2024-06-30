@@ -1,5 +1,5 @@
 .product {
-  width: 120px;
+  width: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,12 +20,6 @@
   margin-top: 9px;
   margin-bottom: 12px;
   width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.product h2:hover {
-  text-overflow: unset;
 }
 
 .product h3 {
