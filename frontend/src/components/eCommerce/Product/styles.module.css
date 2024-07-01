@@ -16,12 +16,33 @@
 }
 
 .product h2 {
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 9px;
   margin-bottom: 12px;
   width: 100%;
+  font-weight: 600;
+  color: #444;
 }
 
 .product h3 {
   font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.product p {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.product span {
+  font-weight: 600;
+}
+
+.error {
+  color: #ff0000;
+}
+
+.permissible {
+  color: #279b37;
 }

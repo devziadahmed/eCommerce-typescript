@@ -36,6 +36,7 @@ It's my first e-commerce project, and it's exposed me to a lot of new and intere
 - Guards and Protected Routes
 - Introduced to AXIOS
 - Introduced to Bootstrap
+- Introduced to Redux persist
 
 # How to run
 

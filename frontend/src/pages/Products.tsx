@@ -7,13 +7,19 @@ import { actGetProductsByCat, cleanProducts } from "@store/products/productsSlic
 
 import { Product } from "@components/eCommerce";
 import Loading from "@components/feedback/Loading/Loading";
-import { GridList } from "@components/shared";
+import { GridList, Heading } from "@components/shared";
 
 const Products = () => {
   const { prefix } = useParams();
 
   const dispatch = useAppDispatch();
   const { error, status, records } = useAppSelector((state) => state.products);
+  const cartItems = useAppSelector((state) => state.cart.items);
+
+  const productsFullInfo = records.map((record) => ({
+    ...record,
+    quantity: record.id ? cartItems[record.id] || 0 : 0,
+  }));
 
   useEffect(() => {
     dispatch(actGetProductsByCat(prefix as string));
@@ -24,16 +30,20 @@ const Products = () => {
   }, [dispatch]);
 
   return (
-    <Container>
+    <>
+      <Heading>
+        <span className="text-capitalize">{prefix}</span> Products
+      </Heading>
+
       <Loading status={status} error={error}>
         <Row>
           <GridList<Product>
-            records={records}
+            records={productsFullInfo}
             renderItem={(record) => <Product {...record} />}
           />
         </Row>
       </Loading>
-    </Container>
+    </>
   );
 };
 
