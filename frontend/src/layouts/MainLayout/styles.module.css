@@ -8,3 +8,8 @@
 .wrapper {
   margin: 30px 0 10px;
 }
+
+/* Firefox scrollbar is kept because it's interactive*/
+::-webkit-scrollbar {
+  display: none;
+}

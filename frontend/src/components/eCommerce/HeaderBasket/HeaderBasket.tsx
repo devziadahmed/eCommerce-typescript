@@ -5,6 +5,7 @@ import { useAppSelector } from "@store/hooks";
 import { getCartTotalQuantity } from "@store/cart/cartSlice";
 
 import styles from "./styles.module.css";
+import { Link } from "react-router-dom";
 const { basketContainer, basketQuantity, pumpCartQuantity, basketCart } = styles;
 
 const HeaderBasket = () => {
@@ -23,14 +24,16 @@ const HeaderBasket = () => {
   }, [cartItemsQuantity]);
 
   return (
-    <div className={basketContainer}>
-      <div className={basketCart}>
-        <Logo title="basket icon" />
-        <div className={cartBastketStyles}>{cartItemsQuantity}</div>
-      </div>
+    <Link to="/cart">
+      <div className={basketContainer}>
+        <div className={basketCart}>
+          <Logo title="basket icon" />
+          <div className={cartBastketStyles}>{cartItemsQuantity}</div>
+        </div>
 
-      <h3>Cart</h3>
-    </div>
+        <h3>Cart</h3>
+      </div>
+    </Link>
   );
 };
 

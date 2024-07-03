@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
-import styles from "./styles.module.css";
 import type { Category } from "@apptypes/category";
+
+import styles from "./styles.module.css";
 const { category, categoryImg, categoryTitle } = styles;
 
 type CategoryProps = Omit<Category, "id">;

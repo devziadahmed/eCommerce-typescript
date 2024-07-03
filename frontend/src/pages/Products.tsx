@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { LoaderFunction, useParams } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { Link, LoaderFunction, useParams } from "react-router-dom";
+import { Row } from "react-bootstrap";
 
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actGetProductsByCat, cleanProducts } from "@store/products/productsSlice";
@@ -8,6 +8,8 @@ import { actGetProductsByCat, cleanProducts } from "@store/products/productsSlic
 import { Product } from "@components/eCommerce";
 import Loading from "@components/feedback/Loading/Loading";
 import { GridList, Heading } from "@components/shared";
+
+import LeftArrow from "@assets/left-arrow.svg?react";
 
 const Products = () => {
   const { prefix } = useParams();
@@ -31,6 +33,10 @@ const Products = () => {
 
   return (
     <>
+      <Link to="/categories" className="basic-link mb-2">
+        <LeftArrow /> Go back to <span className="fw-bold">Categories</span>
+      </Link>
+
       <Heading>
         <span className="text-capitalize">{prefix}</span> Products
       </Heading>

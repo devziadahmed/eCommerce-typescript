@@ -15,6 +15,6 @@ export function formatPrice(value: number, locale = "en-EG", currency = "EGP") {
   return new Intl.NumberFormat(locale, {
     style: "currency",
     currency: currency,
-    currencyDisplay: "name",
+    currencyDisplay: "code",
   }).format(value);
 }

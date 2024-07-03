@@ -10,3 +10,14 @@
 .not-found p {
   font-size: clamp(30px, 5vw, 60px);
 }
+
+.basic-link {
+  font-size: 15px;
+  color: #000;
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+}
+.basic-link:hover {
+  text-decoration: underline;
+}

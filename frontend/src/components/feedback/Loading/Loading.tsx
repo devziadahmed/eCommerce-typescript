@@ -8,7 +8,7 @@ type LoadingProps = SliceState & {
 const Loading = ({ status, error, children }: LoadingProps) => {
   if (status === "pending") return <p>Loading please wait</p>;
 
-  if (status === "failed") return <p>{error}</p>;
+  if (status === "failed" || error) return <p>{error}</p>;
 
   return <div>{children}</div>;
 };

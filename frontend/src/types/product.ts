@@ -6,3 +6,5 @@ export type Product = {
   img: string;
   max: number;
 };
+
+export type ProductWithQuantity = Product & { quantity: number };
