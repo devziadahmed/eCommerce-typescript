@@ -96,5 +96,12 @@
       "img": "https://eg.hm.com/assets/styles/HNM/14472541/cb9d35f1480ce5c8b0be39ad7fd35ab9f8004ce0/2/image-thumb__3453052__product_listing/70408034bd9792a93abbc8ad322565337f535e24.jpg",
       "max": 2
     }
+  ],
+  "wishlist": [
+    {
+      "userId": "1",
+      "productId": 1,
+      "id": 1
+    }
   ]
 }

@@ -5,6 +5,7 @@ export type Product = {
   cat_prefix: string;
   img: string;
   max: number;
+  isLiked?: boolean;
 };
 
 export type ProductWithQuantity = Product & { quantity: number };

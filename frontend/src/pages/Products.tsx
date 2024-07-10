@@ -9,7 +9,7 @@ import { Product } from "@components/eCommerce";
 import Loading from "@components/feedback/Loading/Loading";
 import { GridList, Heading } from "@components/shared";
 
-import LeftArrow from "@assets/left-arrow.svg?react";
+import LeftArrow from "@assets/svg/left-arrow.svg?react";
 
 const Products = () => {
   const { prefix } = useParams();
@@ -17,10 +17,12 @@ const Products = () => {
   const dispatch = useAppDispatch();
   const { error, status, records } = useAppSelector((state) => state.products);
   const cartItems = useAppSelector((state) => state.cart.items);
+  const wishListItemsId = useAppSelector((state) => state.wishlist);
 
   const productsFullInfo = records.map((record) => ({
     ...record,
     quantity: record.id ? cartItems[record.id] || 0 : 0,
+    isLiked: record.id ? wishListItemsId.itemsId.includes(record.id) : false,
   }));
 
   useEffect(() => {

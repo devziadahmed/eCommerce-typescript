@@ -3,12 +3,14 @@
   align-self: flex-end;
   display: flex;
   align-items: center;
+  border-right: 1px solid #000;
+  padding-right: 10px;
+  margin-right: 20px;
 }
 
 .container h3 {
   font-size: 15px;
-  margin-left: 4px;
-  margin-bottom: 0;
+  margin: 0 10px 0 2px;
   font-weight: 600;
 }
 .iconWrapper {

@@ -21,3 +21,7 @@
 .basic-link:hover {
   text-decoration: underline;
 }
+
+a.active {
+  color: #0dcaf0;
+}

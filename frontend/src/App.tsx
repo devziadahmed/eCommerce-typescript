@@ -1,7 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { MainLayout } from "@layouts/index";
-import { Home, Categories, Product, About, Login, Register, Error, Cart } from "@pages/index";
+import {
+  Home,
+  Categories,
+  Product,
+  About,
+  Login,
+  Register,
+  Error,
+  Cart,
+  Wishlist,
+} from "@pages/index";
 
 import { loader as productLoader } from "@pages/Products";
 
@@ -28,6 +38,10 @@ const App = () => {
         {
           path: "cart",
           element: <Cart />,
+        },
+        {
+          path: "wishlist",
+          element: <Wishlist />,
         },
         {
           path: "about-us",
