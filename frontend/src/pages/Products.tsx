@@ -1,37 +1,16 @@
-import { useEffect } from "react";
-import { Link, LoaderFunction, useParams } from "react-router-dom";
+import { Link, LoaderFunction } from "react-router-dom";
 import { Row } from "react-bootstrap";
 
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { actGetProductsByCat, cleanProducts } from "@store/products/productsSlice";
+import useProducts from "@hooks/useProducts";
 
 import { Product } from "@components/eCommerce";
-import Loading from "@components/feedback/Loading/Loading";
 import { GridList, Heading } from "@components/shared";
-
+import Loading from "@components/feedback/Loading/Loading";
 import LeftArrow from "@assets/svg/left-arrow.svg?react";
+import { isCategoryPrefix } from "@apptypes/guards";
 
 const Products = () => {
-  const { prefix } = useParams();
-
-  const dispatch = useAppDispatch();
-  const { error, status, records } = useAppSelector((state) => state.products);
-  const cartItems = useAppSelector((state) => state.cart.items);
-  const wishListItemsId = useAppSelector((state) => state.wishlist);
-
-  const productsFullInfo = records.map((record) => ({
-    ...record,
-    quantity: record.id ? cartItems[record.id] || 0 : 0,
-    isLiked: record.id ? wishListItemsId.itemsId.includes(record.id) : false,
-  }));
-
-  useEffect(() => {
-    dispatch(actGetProductsByCat(prefix as string));
-
-    return () => {
-      dispatch(cleanProducts());
-    };
-  }, [dispatch]);
+  const { error, status, productsFullInfo, prefix } = useProducts();
 
   return (
     <>
@@ -39,9 +18,7 @@ const Products = () => {
         <LeftArrow /> Go back to <span className="fw-bold">Categories</span>
       </Link>
 
-      <Heading>
-        <span className="text-capitalize">{prefix}</span> Products
-      </Heading>
+      <Heading title={`${prefix} products`} />
 
       <Loading status={status} error={error}>
         <Row>
@@ -58,7 +35,11 @@ const Products = () => {
 export default Products;
 
 export const loader: LoaderFunction = ({ params }) => {
-  if (typeof params.prefix !== "string" || !/^[a-z]+$/i.test(params.prefix)) {
+  if (
+    typeof params.prefix !== "string" ||
+    !/^[a-z]+$/i.test(params.prefix) ||
+    !isCategoryPrefix(params.prefix)
+  ) {
     throw new Response("Bad request", {
       statusText: "Category not found",
       status: 400,

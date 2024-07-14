@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Product } from "@apptypes/product";
 import { Prettify, SliceState } from "@apptypes/shared";
 import actGetProductsByCat from "./thunk/actGetProductsByCat";
+import { isString } from "@apptypes/guards";
 
 type ProductsState = Prettify<SliceState> & {
   records: Product[];
@@ -36,7 +37,7 @@ const productsSlice = createSlice({
     });
     builder.addCase(actGetProductsByCat.rejected, (state, action) => {
       state.status = "failed";
-      if (typeof action.payload === "string") {
+      if (isString(action.payload)) {
         state.error = action.payload;
       }
     });

@@ -25,3 +25,17 @@
 a.active {
   color: #0dcaf0;
 }
+
+.position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.flex-screen-center {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}

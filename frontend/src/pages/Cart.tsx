@@ -1,36 +1,18 @@
-import { useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 import { CartSubtotalPrice } from "@components/eCommerce";
 import CartItemList from "@components/eCommerce/CartItem/CartItemList/CartItemList";
 import Loading from "@components/feedback/Loading/Loading";
 import { Heading } from "@components/shared";
-import { actGetProductsByItems, cartItemChangeQuntity } from "@store/cart/cartSlice";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { createPortal } from "react-dom";
+
+import useCart from "@hooks/useCart";
 
 const Cart = () => {
-  const dispatch = useAppDispatch();
-  const { items, productsFullInfo, status, error } = useAppSelector((state) => state.cart);
-
-  useEffect(() => {
-    if (Object.keys(items).length !== 0) dispatch(actGetProductsByItems());
-  }, [items]);
-
-  const products = productsFullInfo.map((product) => ({
-    ...product,
-    quantity: items[product.id as keyof typeof items],
-  }));
-
-  const changeQuantityHandler = useCallback(
-    (id: number, quantity: number) => {
-      dispatch(cartItemChangeQuntity(id, quantity));
-    },
-    [dispatch]
-  );
+  const { status, error, products, changeQuantityHandler } = useCart();
 
   return (
     <>
-      <Heading>Cart</Heading>
+      <Heading title="cart" />
       <Loading status={status} error={error}>
         {products.length > 0 ? (
           <>

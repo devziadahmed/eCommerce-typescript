@@ -4,6 +4,7 @@ import actGetWishlist from "./thunk/actGetWishlist";
 import { Status } from "@apptypes/shared";
 import { Product } from "@apptypes/product";
 import { RootState } from "@store/store";
+import { isString } from "@apptypes/guards";
 
 type WishlistState = {
   itemsId: number[];
@@ -49,7 +50,7 @@ const wishlistSlice = createSlice({
     });
     builder.addCase(actLikeToggle.rejected, (state, action) => {
       state.status = "failed";
-      if (action.payload && typeof action.payload === "string") {
+      if (action.payload && isString(action.payload)) {
         state.error = action.payload;
       }
     });
@@ -65,7 +66,7 @@ const wishlistSlice = createSlice({
     });
     builder.addCase(actGetWishlist.rejected, (state, action) => {
       state.status = "failed";
-      if (action.payload && typeof action.payload === "string") state.error = action.payload;
+      if (action.payload && isString(action.payload)) state.error = action.payload;
     });
   },
 });

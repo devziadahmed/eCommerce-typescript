@@ -4,3 +4,5 @@ export type Category = {
   prefix: string;
   img: string;
 };
+
+export type CategoryPrefix = "men" | "women" | "kids" | "baby" | "sport";

@@ -1,38 +1,26 @@
-import { memo, useState } from "react";
+import { memo } from "react";
 import { Button, Spinner } from "react-bootstrap";
 
 import type { Product } from "@apptypes/product";
 
-import { useAppDispatch } from "@store/hooks";
-import { addToCart } from "@store/cart/cartSlice";
-import { actLikeToggle } from "@store/wishlist/wishlistSlice";
-
-import { formatPrice, throttle } from "@utils/index";
+import { formatPrice } from "@utils/index";
 
 import styles from "./styles.module.css";
 const { product, productImg, error, permissible, wishlistBtn, liked } = styles;
 
 import Like from "@assets/svg/like.svg?react";
 import Liked from "@assets/svg/like-fill.svg?react";
+import useProduct from "@hooks/useProduct";
 
 const Product = memo(
   ({ id, title, price, img, max, quantity, isLiked }: Product & { quantity?: number }) => {
-    const [isLoading, setIsLoading] = useState(false);
-
-    const dispatch = useAppDispatch();
-
-    const throttledAddToCart = throttle(() => dispatch(addToCart(id)), 300);
-
-    const remainingQuantity = max - (quantity ?? 0);
-    const reachedMaxQuantity = remainingQuantity <= 0;
-
-    const handleLikeToggle = () => {
-      setIsLoading(true);
-      id &&
-        dispatch(actLikeToggle(id))
-          .unwrap()
-          .then(() => setIsLoading(false));
-    };
+    const {
+      isLoading,
+      throttledAddToCart,
+      handleLikeToggle,
+      reachedMaxQuantity,
+      remainingQuantity,
+    } = useProduct(max, quantity, id);
 
     return (
       <div className={product}>

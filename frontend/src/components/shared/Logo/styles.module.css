@@ -1,0 +1,16 @@
+.headerLogo {
+  color: inherit;
+  text-decoration: none;
+  font-size: 2.3rem;
+  margin: 0;
+}
+
+.headerLogo h1 {
+  margin: 0;
+  display: flex;
+}
+
+.headerLogo h1 span {
+  display: block;
+  margin-right: 5px;
+}

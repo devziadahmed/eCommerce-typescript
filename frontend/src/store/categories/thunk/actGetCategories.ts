@@ -1,20 +1,16 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+
 import { Category } from "@apptypes/category";
+import { handleAxiosError } from "@utils/handleAxiosError";
 
 const actGetCategories = createAsyncThunk("categories/getCategories", async (_, thunkAPI) => {
-  const { rejectWithValue } = thunkAPI;
+  const { rejectWithValue, signal } = thunkAPI;
   try {
-    const response = await axios.get<Category[]>("/categories");
+    const response = await axios.get<Category[]>("/categories", { signal });
     return response.data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      return rejectWithValue(error.response?.data.message || error.message);
-    } else if (error instanceof Error && error.message) {
-      return rejectWithValue(error.message);
-    } else {
-      return rejectWithValue("An unexpected error");
-    }
+    return rejectWithValue(handleAxiosError(error));
   }
 });
 

@@ -1,24 +1,22 @@
 import { Link, NavLink } from "react-router-dom";
-import { Badge, Container, Nav, Navbar } from "react-bootstrap";
-import { HeaderBasket, HeaderWishlist } from "@components/eCommerce";
+import { Container, Nav, Navbar } from "react-bootstrap";
 
 import styles from "./styles.module.css";
+const { headerContainer, headerLeftBar } = styles;
 
-const { headerContainer, headerLogo, headerLeftBar } = styles;
+import { HeaderIcons } from "@components/eCommerce";
+import Logo from "../Logo/Logo";
 
 const Header = () => {
   return (
     <header>
       <div className={headerContainer}>
         <Link to="/">
-          <h1 className={headerLogo}>
-            <span>our</span> <Badge bg="info">Ecom</Badge>
-          </h1>
+          <Logo />
         </Link>
 
         <div className={headerLeftBar}>
-          <HeaderWishlist />
-          <HeaderBasket />
+          <HeaderIcons />
         </div>
       </div>
 
