@@ -11,13 +11,14 @@ const Product = lazy(() => import("@pages/Products"));
 const About = lazy(() => import("@pages/About"));
 const Login = lazy(() => import("@pages/Login"));
 const Register = lazy(() => import("@pages/Register"));
-const Error = lazy(() => import("@pages/ErrorPage"));
 const Cart = lazy(() => import("@pages/Cart"));
 const Wishlist = lazy(() => import("@pages/Wishlist"));
+import ErrorPage from "@pages/ErrorPage";
 
 import { loader as productLoader } from "@pages/Products";
 import { Spinner } from "react-bootstrap";
 import Logo from "@components/shared/Logo/Logo";
+import PageSuspenseFallback from "@components/feedback/PageSuspenseFallback/PageSuspenseFallback";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -35,129 +36,71 @@ const App = () => {
           <MainLayout />
         </Suspense>
       ),
-      errorElement: (
-        <Suspense
-          fallback={
-            <div className="position-center">
-              <Spinner variant="info" />
-            </div>
-          }
-        >
-          <Error />
-        </Suspense>
-      ),
+      errorElement: <ErrorPage />,
       children: [
         {
           index: true,
           element: (
-            <Suspense
-              fallback={
-                <div className="position-center">
-                  <Spinner variant="info" />
-                </div>
-              }
-            >
+            <PageSuspenseFallback>
               <Home />
-            </Suspense>
+            </PageSuspenseFallback>
           ),
         },
         {
           path: "categories",
           element: (
-            <Suspense
-              fallback={
-                <div className="position-center">
-                  <Spinner variant="info" />
-                </div>
-              }
-            >
+            <PageSuspenseFallback>
               <Categories />
-            </Suspense>
+            </PageSuspenseFallback>
           ),
         },
         {
           path: "categories/products/:prefix",
           element: (
-            <Suspense
-              fallback={
-                <div className="position-center">
-                  <Spinner variant="info" />
-                </div>
-              }
-            >
+            <PageSuspenseFallback>
               <Product />
-            </Suspense>
+            </PageSuspenseFallback>
           ),
           loader: productLoader,
         },
         {
           path: "cart",
           element: (
-            <Suspense
-              fallback={
-                <div className="position-center">
-                  <Spinner variant="info" />
-                </div>
-              }
-            >
+            <PageSuspenseFallback>
               <Cart />
-            </Suspense>
+            </PageSuspenseFallback>
           ),
         },
         {
           path: "wishlist",
           element: (
-            <Suspense
-              fallback={
-                <div className="position-center">
-                  <Spinner variant="info" />
-                </div>
-              }
-            >
+            <PageSuspenseFallback>
               <Wishlist />
-            </Suspense>
+            </PageSuspenseFallback>
           ),
         },
         {
           path: "about-us",
           element: (
-            <Suspense
-              fallback={
-                <div className="position-center">
-                  <Spinner variant="info" />
-                </div>
-              }
-            >
+            <PageSuspenseFallback>
               <About />
-            </Suspense>
+            </PageSuspenseFallback>
           ),
         },
         {
           path: "login",
           element: (
-            <Suspense
-              fallback={
-                <div className="position-center">
-                  <Spinner variant="info" />
-                </div>
-              }
-            >
+            <PageSuspenseFallback>
               <Login />
-            </Suspense>
+            </PageSuspenseFallback>
           ),
         },
         {
           path: "register",
           element: (
-            <Suspense
-              fallback={
-                <div className="position-center">
-                  <Spinner variant="info" />
-                </div>
-              }
-            >
+            <PageSuspenseFallback>
               <Register />
-            </Suspense>
+            </PageSuspenseFallback>
           ),
         },
       ],

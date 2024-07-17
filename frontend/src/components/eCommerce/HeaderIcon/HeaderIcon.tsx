@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import styles from "./styles.module.css";
-const { container, totalNum, pumpAnimate, iconWrapper } = styles;
+const { container, totalNum, iconWrapper } = styles;
 
 type HeaderIconProps = {
   totalQuantity: number;
@@ -13,7 +13,7 @@ type HeaderIconProps = {
 
 const HeaderIcon = ({ totalQuantity, to, icon, title }: HeaderIconProps) => {
   const [isAnimate, setIsAnimate] = useState(false);
-  const cartBastketStyles = `${totalNum} ${isAnimate ? pumpAnimate : ""}`;
+  const cartBastketStyles = `${totalNum} ${isAnimate ? "pumpAnimate" : ""}`;
 
   useEffect(() => {
     if (!totalQuantity) return;

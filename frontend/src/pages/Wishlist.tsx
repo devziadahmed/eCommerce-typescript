@@ -11,11 +11,12 @@ const Wishlist = () => {
   return (
     <>
       <Heading title="your wishlist" />
-      <Loading status={status} error={error}>
+      <Loading status={status} error={error} type="product">
         <Row>
           <GridList<Product>
             records={records}
             renderItem={(record) => <Product {...record} />}
+            emptyMessage="Your wishlist is empty"
           />
         </Row>
       </Loading>

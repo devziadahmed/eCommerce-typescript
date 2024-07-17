@@ -20,7 +20,7 @@ const Products = () => {
 
       <Heading title={`${prefix} products`} />
 
-      <Loading status={status} error={error}>
+      <Loading status={status} error={error} type="product">
         <Row>
           <GridList<Product>
             records={productsFullInfo}

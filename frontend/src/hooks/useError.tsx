@@ -7,7 +7,7 @@ const useError = () => {
     if (isRouteErrorResponse(error)) {
       return (
         <>
-          <h1>{error.status}</h1>
+          {/* <h1>{error.status}</h1> */}
           <p>{error.statusText}</p>
         </>
       );
