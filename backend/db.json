@@ -1,4 +1,9 @@
 {
+  "users": [
+    {
+      "email": "ziadahmedcf@gmail.com"
+    }
+  ],
   "categories": [
     {
       "id": 1,

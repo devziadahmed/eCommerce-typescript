@@ -1,0 +1,18 @@
+.passwordLabel {
+  margin-bottom: 8px;
+  display: flex;
+}
+
+.passwordLabel label {
+  margin: 0;
+}
+
+.passwordLabel button {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin-left: 10px;
+  color: #777;
+  line-height: 1.4;
+}
