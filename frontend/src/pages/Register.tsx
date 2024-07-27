@@ -1,60 +1,21 @@
-import { FocusEvent } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
-import { RegisterSchema, registerSchema } from "@validations/register";
-
-import useCheckEmailAvailability from "@hooks/useCheckEmailAvailability";
-
+import { Form, Button, Row, Col, Spinner } from "react-bootstrap";
 import { Heading } from "@components/shared";
 import Input from "@components/Form/Input/Input";
 import PasswordWithVisibility from "@components/Form/PasswordWithVisibility/PasswordWithVisibility";
-
-const emailAvailabilityMessages = {
-  idle: "",
-  checking:
-    "We're currently checking the availability of this email address. Please wait a moment.",
-  available: "This email address is available for use",
-  notAvailable: "This email address already exists",
-  failed: "Something went wrong",
-};
+import useRegister from "@hooks/useRegister";
 
 function Register() {
   const {
+    error,
+    errors,
+    status,
+    emailOnBlurHandler,
+    onSubmit,
+    emailAvailabilityMessage,
     register,
-    formState: { errors },
     handleSubmit,
-    getFieldState,
-    trigger,
-  } = useForm<RegisterSchema>({
-    mode: "onBlur",
-    resolver: zodResolver(registerSchema),
-  });
-
-  const { emailAvailabilityStatus, receivedEmail, checkEmailAvailability, resetAvailability } =
-    useCheckEmailAvailability();
-
-  const emailAvailabilityMessage =
-    emailAvailabilityStatus && emailAvailabilityMessages[emailAvailabilityStatus];
-
-  const onSubmit: SubmitHandler<RegisterSchema> = (fieldValues) => {
-    console.log(fieldValues);
-  };
-
-  const emailOnBlurHandler = async (e: FocusEvent<HTMLInputElement>) => {
-    await trigger("email");
-    const value = e.target.value;
-    const { isDirty, invalid } = getFieldState("email");
-
-    if (isDirty && !invalid && receivedEmail !== value) {
-      checkEmailAvailability(value);
-    }
-
-    if (isDirty && invalid && receivedEmail) {
-      resetAvailability();
-    }
-  };
+    emailAvailabilityStatus,
+  } = useRegister();
 
   return (
     <>
@@ -108,9 +69,22 @@ function Register() {
               error={errors.confirmPassword?.message}
             />
 
-            <Button variant="info" type="submit" style={{ color: "white" }}>
-              Submit
+            <Button
+              variant="info"
+              type="submit"
+              style={{ color: "white" }}
+              disabled={emailAvailabilityStatus === "checking" || status === "pending"}
+            >
+              {status === "pending" ? (
+                <>
+                  Loading <Spinner animation="border" size="sm" />
+                </>
+              ) : (
+                "Submit"
+              )}
             </Button>
+
+            {error && <p style={{ color: "#DC3545", marginTop: "10px" }}>{error}</p>}
           </Form>
         </Col>
       </Row>

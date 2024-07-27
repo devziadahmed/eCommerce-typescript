@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "json-server db.json --watch --port 5005"
+    "start": "json-server-auth db.json --watch --port 5005"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "json-server": "0.17.4"
+  },
+  "devDependencies": {
+    "json-server-auth": "^2.1.0"
   }
 }

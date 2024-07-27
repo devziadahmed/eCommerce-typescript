@@ -1,6 +1,7 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 import actLikeToggle from "./thunk/actLikeToggle";
 import actGetWishlist from "./thunk/actGetWishlist";
+import { logout } from "@store/auth/authSlice";
 import { Status } from "@apptypes/shared";
 import { Product } from "@apptypes/product";
 import { RootState } from "@store/store";
@@ -55,18 +56,31 @@ const wishlistSlice = createSlice({
       }
     });
 
+    // get wishlist items
     builder.addCase(actGetWishlist.pending, (state) => {
       state.error = null;
       state.status = "pending";
     });
     builder.addCase(actGetWishlist.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.error = null;
-      if (action.payload) state.productsFullInfo = action.payload;
+      if (action.payload.dataType === "productsFullInfo") {
+        state.productsFullInfo = action.payload.data as Product[];
+      } else if (action.payload.dataType === "productIds") {
+        state.itemsId = action.payload.data as number[];
+      } else {
+        state.productsFullInfo = [];
+        state.itemsId = [];
+      }
     });
     builder.addCase(actGetWishlist.rejected, (state, action) => {
       state.status = "failed";
       if (action.payload && isString(action.payload)) state.error = action.payload;
+    });
+
+    // logout reset
+    builder.addCase(logout, (state) => {
+      state.itemsId = [];
+      state.productsFullInfo = [];
     });
   },
 });

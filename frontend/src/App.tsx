@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
 
 const MainLayout = lazy(() =>
   import("@layouts/index").then((module) => ({ default: module.MainLayout }))
@@ -13,12 +14,14 @@ const Login = lazy(() => import("@pages/Login"));
 const Register = lazy(() => import("@pages/Register"));
 const Cart = lazy(() => import("@pages/Cart"));
 const Wishlist = lazy(() => import("@pages/Wishlist"));
+const Profile = lazy(() => import("@pages/Profile"));
+const Orders = lazy(() => import("@pages/Orders"));
 import ErrorPage from "@pages/ErrorPage";
-
 import { loader as productLoader } from "@pages/Products";
-import { Spinner } from "react-bootstrap";
+
 import Logo from "@components/shared/Logo/Logo";
 import PageSuspenseFallback from "@components/feedback/PageSuspenseFallback/PageSuspenseFallback";
+import ProtectedRoute from "@components/Auth/ProtectedRoute";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -74,9 +77,11 @@ const App = () => {
         {
           path: "wishlist",
           element: (
-            <PageSuspenseFallback>
-              <Wishlist />
-            </PageSuspenseFallback>
+            <ProtectedRoute>
+              <PageSuspenseFallback>
+                <Wishlist />
+              </PageSuspenseFallback>
+            </ProtectedRoute>
           ),
         },
         {
@@ -101,6 +106,26 @@ const App = () => {
             <PageSuspenseFallback>
               <Register />
             </PageSuspenseFallback>
+          ),
+        },
+        {
+          path: "profile",
+          element: (
+            <ProtectedRoute>
+              <PageSuspenseFallback>
+                <Profile />
+              </PageSuspenseFallback>
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "orders",
+          element: (
+            <ProtectedRoute>
+              <PageSuspenseFallback>
+                <Orders />
+              </PageSuspenseFallback>
+            </ProtectedRoute>
           ),
         },
       ],

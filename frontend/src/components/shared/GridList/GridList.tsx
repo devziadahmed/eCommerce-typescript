@@ -7,7 +7,7 @@ import useAnimate from "@hooks/useAnimateErrorMessage";
 type GridListProps<T> = {
   records: T[];
   renderItem: (record: T) => ReactNode;
-  emptyMessage: string;
+  emptyMessage?: string;
 };
 
 const GridList = <T extends { id?: number }>({

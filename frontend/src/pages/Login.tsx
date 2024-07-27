@@ -1,26 +1,22 @@
-import { Form, Button, Row, Col } from "react-bootstrap";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
-import { loginSchema, LoginSchema } from "@validations/login";
-
+import { Form, Button, Row, Col, Alert, Spinner } from "react-bootstrap";
 import { Heading } from "@components/shared";
 import PasswordWithVisibility from "@components/Form/PasswordWithVisibility/PasswordWithVisibility";
 import Input from "@components/Form/Input/Input";
 
+import useLogin from "@hooks/useLogin";
+
 const Login = () => {
   const {
+    error,
+    status,
     register,
-    formState: { errors },
+    errors,
     handleSubmit,
-  } = useForm<LoginSchema>({
-    resolver: zodResolver(loginSchema),
-    mode: "onBlur",
-  });
-
-  const onSubmit: SubmitHandler<LoginSchema> = (fieldValues) => {
-    console.log(fieldValues);
-  };
+    onSubmit,
+    isAccountCreated,
+    isLoginRequired,
+    unlockedPage,
+  } = useLogin();
 
   return (
     <>
@@ -28,6 +24,26 @@ const Login = () => {
 
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
+          {isAccountCreated && (
+            <Alert variant="success">
+              Your account is successfully created, Please login to start shopping
+            </Alert>
+          )}
+
+          {isLoginRequired && (
+            <Alert variant="danger">
+              {unlockedPage ? (
+                <>
+                  Login is required to enter{" "}
+                  <span className="text-capitalize">{unlockedPage?.replaceAll("/", "")}</span>{" "}
+                  page
+                </>
+              ) : (
+                "Login is required to do this action"
+              )}
+            </Alert>
+          )}
+
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Input
               name="email"
@@ -44,8 +60,16 @@ const Login = () => {
             />
 
             <Button variant="info" type="submit" style={{ color: "white" }}>
-              Submit
+              {status === "pending" ? (
+                <>
+                  Loading <Spinner animation="border" size="sm" />
+                </>
+              ) : (
+                "Submit"
+              )}
             </Button>
+
+            {error && <p style={{ color: "#DC3545", marginTop: "10px" }}>{error}</p>}
           </Form>
         </Col>
       </Row>
