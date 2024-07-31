@@ -1,10 +1,14 @@
 .headerLogo {
   color: inherit;
   text-decoration: none;
-  font-size: 2.3rem;
+  font-size: 2rem;
   margin: 0;
 }
-
+@media (max-width: 540px) {
+  .headerLogo {
+    font-size: 1.5rem;
+  }
+}
 .headerLogo h1 {
   margin: 0;
   display: flex;

@@ -75,7 +75,12 @@ const Header = () => {
                       Orders
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item as={Link} to="/" onClick={handleClickLogout}>
+                    <NavDropdown.Item
+                      as={Link}
+                      to="/"
+                      onClick={handleClickLogout}
+                      style={{ color: "#ff4c4c" }}
+                    >
                       Logout
                     </NavDropdown.Item>
                   </NavDropdown>

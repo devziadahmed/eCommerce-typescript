@@ -10,6 +10,7 @@ const { product, productImg, error, permissible, wishlistBtn, liked } = styles;
 
 import Like from "@assets/svg/like.svg?react";
 import Liked from "@assets/svg/like-fill.svg?react";
+
 import useProduct from "@hooks/useProduct";
 
 const Product = memo(

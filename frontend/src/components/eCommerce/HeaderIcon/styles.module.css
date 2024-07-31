@@ -11,6 +11,11 @@
   margin-bottom: 0;
   font-weight: 600;
 }
+@media (max-width: 540px) {
+  .container h3 {
+    font-size: 14px;
+  }
+}
 .iconWrapper {
   position: relative;
 }
