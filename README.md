@@ -26,18 +26,6 @@ It's my first e-commerce project, and it's exposed me to a lot of new and intere
 - React Hook Form
 - ZOD Validation
 
-# Things that i learned
-
-- App Skeleton
-- Optimization
-- Some new Design Patterns
-- Dynamic Components
-- Encapsulated vs Container and View
-- Guards and Protected Routes
-- Introduced to AXIOS
-- Introduced to Bootstrap
-- Introduced to Redux persist
-
 # How to run
 
 backend:
