@@ -17,6 +17,7 @@ import {
   productsReducer,
   wishlistReducer,
   authReducer,
+  ordersReducer,
 } from "./import";
 
 const rootPersistConfig = {
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
   cart: persistReducer(cartPersistConfig, cartReducer),
   wishlist: wishlistReducer,
   auth: persistReducer(authPersistConfig, authReducer),
+  orders: ordersReducer,
 });
 
 const persistedRootReducer = persistReducer(rootPersistConfig, rootReducer);

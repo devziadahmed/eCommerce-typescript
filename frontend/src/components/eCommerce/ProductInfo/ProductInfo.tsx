@@ -1,38 +1,39 @@
-// import styles from "./styles.module.css";
+import styles from "./styles.module.css";
 
-// import { CSSProperties, ReactNode } from "react";
+type ProductInfoProps = {
+  title: string;
+  img: string;
+  price: number;
+  quantity?: number;
+  direction?: "row" | "column";
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+};
 
-// import { Product } from "@apptypes/product";
-// import { Prettify } from "@apptypes/shared";
+const ProductInfo = ({
+  title,
+  img,
+  price,
+  quantity,
+  direction = "row",
+  children,
+  style,
+}: ProductInfoProps) => {
+  return (
+    <div className={`${styles[`product-${direction}`]}`} style={style}>
+      <div className={`${styles[`productImg-${direction}`]}`}>
+        <img src={img} alt={title} />
+      </div>
+      <div className={`${styles[`productInfo-${direction}`]}`}>
+        <h2 title={title}>{title}</h2>
+        <h3>{price.toFixed(2)} EGP</h3>
+        {quantity && <h3>Total Quantity: {quantity}</h3>}
+        {quantity && <h3>Price Total: {(quantity * price).toFixed(2)}</h3>}
 
-// import { formatPrice } from "@utils/index";
+        {children}
+      </div>
+    </div>
+  );
+};
 
-// type ProductInfoProps = Prettify<Pick<Product, "title" | "img" | "price">> & {
-//   children?: ReactNode;
-//   direction?: "row" | "column";
-//   style?: CSSProperties;
-// };
-
-// const ProfileInfo = ({
-//   title,
-//   img,
-//   price,
-//   direction = "row",
-//   style,
-//   children,
-// }: ProductInfoProps) => {
-//   return (
-//     <div className={product}>
-//       <div className={productImg}>
-//         <img src={img} alt={title} />
-//       </div>
-//       <div className={productInfo}>
-//         <h2>{title}</h2>
-//         <h3>{formatPrice(price)}</h3>
-//         {children}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProfileInfo;
+export default ProductInfo;

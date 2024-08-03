@@ -3,8 +3,12 @@ import { memo, ReactNode } from "react";
 const Heading = memo(({ title }: { title?: string }) => {
   return (
     <h2
-      className="mb-3"
-      style={{ fontSize: "26px", paddingBlockEnd: "20px", textTransform: "capitalize" }}
+      style={{
+        fontSize: "26px",
+        paddingBlockEnd: "20px",
+        textTransform: "capitalize",
+        margin: "0",
+      }}
     >
       {title}
     </h2>

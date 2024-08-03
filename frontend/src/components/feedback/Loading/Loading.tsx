@@ -5,11 +5,13 @@ import CategorySkeleton from "../skeletons/CategorySkeleton/CategorySkeleton";
 import ProductSkeleton from "../skeletons/ProductSkeleton/ProductSkeleton";
 import CartSkeleton from "../skeletons/CartSkeleton/CartSkeleton";
 import LottieHandler from "../LottieHandler/LottieHandler";
+import TableSkeleton from "../skeletons/TableSkeleton/TableSkeleton";
 
 const skeletonTypes = {
   cart: CartSkeleton,
   product: ProductSkeleton,
   category: CategorySkeleton,
+  table: TableSkeleton,
 };
 
 export type LoadingProps = SliceState & {

@@ -9,10 +9,18 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { Product } from "@apptypes/product";
 
 import { ThunkPromise } from "@apptypes/shared";
+import { resetOrders } from "@store/orders/ordersSlice";
 
 const useCart = () => {
   const dispatch = useAppDispatch();
-  const { items, productsFullInfo, status, error } = useAppSelector((state) => state.cart);
+  const {
+    items,
+    productsFullInfo,
+    status: cartStatus,
+    error,
+  } = useAppSelector((state) => state.cart);
+  const userAccessToken = useAppSelector((state) => state.auth.accessToken);
+  const { status: placeOrderStatus } = useAppSelector((state) => state.orders);
 
   useEffect(() => {
     let promise: ThunkPromise<Product[]>;
@@ -24,8 +32,12 @@ const useCart = () => {
         promise.abort();
       }
       dispatch(cleanCartProducts());
+
+      if (placeOrderStatus === "succeeded") {
+        dispatch(resetOrders());
+      }
     };
-  }, [items]);
+  }, [dispatch, items]);
 
   const products = productsFullInfo.map((product) => ({
     ...product,
@@ -39,7 +51,14 @@ const useCart = () => {
     [dispatch]
   );
 
-  return { status, error, products, changeQuantityHandler };
+  return {
+    cartStatus,
+    error,
+    products,
+    changeQuantityHandler,
+    userAccessToken,
+    placeOrderStatus,
+  };
 };
 
 export default useCart;

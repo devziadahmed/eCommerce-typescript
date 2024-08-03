@@ -6,6 +6,7 @@ export type Product = {
   img: string;
   max: number;
   isLiked?: boolean;
+  quantity?: number;
 };
 
 export type ProductWithQuantity = Product & { quantity: number };

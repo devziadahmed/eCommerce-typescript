@@ -8,13 +8,6 @@
       "id": 1
     },
     {
-      "email": "ziadahmedcf1@gmail.com",
-      "password": "$2a$10$O4f75ox/dToKyKUDnamsZOBvweto3jQSlIWxyzuMRnQDXMWIUXX56",
-      "firstName": "ziad",
-      "lastName": "ahmed",
-      "id": 2
-    },
-    {
       "email": "zizo@gmail.com",
       "password": "$2a$10$B0ZsKSLp/WZ8bUI6d/Z4/.CPpdutfULJfHE7joY6y4AzfecojFgsq",
       "firstName": "zizo",
@@ -120,5 +113,140 @@
       "max": 2
     }
   ],
-  "wishlist": []
+  "wishlist": [],
+  "orders": [
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 1,
+          "title": "Jersey top",
+          "price": 249,
+          "img": "https://eg.hm.com/assets/styles/HNM/14482498/6103a8463876770c30cdba3535b7be1f333315fe/2/image-thumb__3464789__product_listing/cb91f8f128ac2125e0ec3a008a2e8d2497d15434.jpg",
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "title": "Regular Fit Jersey top",
+          "price": 229,
+          "img": "https://eg.hm.com/assets/styles/HNM/14482498/6103a8463876770c30cdba3535b7be1f333315fe/2/image-thumb__3464789__product_listing/cb91f8f128ac2125e0ec3a008a2e8d2497d15434.jpg",
+          "quantity": 1
+        },
+        {
+          "id": 3,
+          "title": "Cotton polo shirt",
+          "price": 200,
+          "img": "https://eg.hm.com/assets/styles/HNM/13994073/eeb1d90c4764366000eb8b8571396e81f0de5c44/2/image-thumb__3142108__product_listing/4d6db9e8f936d3d82b13bc5861b0310fa214c74d.jpg",
+          "quantity": 1
+        }
+      ],
+      "subtotal": 678,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 4,
+          "title": "Cotton t-shirt",
+          "price": 100,
+          "img": "https://eg.hm.com/assets/styles/HNM/13650519/6cc34f51caee1d6cfe776b933d667075fa30d90d/2/image-thumb__2888777__product_listing/16c27492b022ac2eef03853f85d5b279a29ebeed.jpg",
+          "quantity": 1
+        },
+        {
+          "id": 5,
+          "title": "Sweatshirt shorts",
+          "price": 300,
+          "img": "https://eg.hm.com/assets/styles/HNM/12652575/3e316aab8ce1b596545d144d0efd362975b3856f/2/image-thumb__1998684__product_listing/48756e509aa05341e4a618ba4c1b0a5ce24ebcae.jpg",
+          "quantity": 1
+        }
+      ],
+      "subtotal": 400,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 2,
+          "title": "Regular Fit Jersey top",
+          "price": 229,
+          "img": "https://eg.hm.com/assets/styles/HNM/14482498/6103a8463876770c30cdba3535b7be1f333315fe/2/image-thumb__3464789__product_listing/cb91f8f128ac2125e0ec3a008a2e8d2497d15434.jpg",
+          "quantity": 1
+        }
+      ],
+      "subtotal": 229,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 6,
+          "title": "Velour top",
+          "price": 300,
+          "img": "https://eg.hm.com/assets/styles/HNM/14478215/543d925539f4a3b92a79df2dfe46d5d481e1c7ae/2/image-thumb__3463278__product_listing/c1417d02c7a93e6d2aca7965003b4f7d490f0ae8.jpg",
+          "quantity": 2
+        }
+      ],
+      "subtotal": 600,
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 1,
+          "title": "Jersey top",
+          "price": 249,
+          "img": "https://eg.hm.com/assets/styles/HNM/14482498/6103a8463876770c30cdba3535b7be1f333315fe/2/image-thumb__3464789__product_listing/cb91f8f128ac2125e0ec3a008a2e8d2497d15434.jpg",
+          "quantity": 1
+        }
+      ],
+      "subtotal": 249,
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 17,
+          "title": "Regular Fit football shirt",
+          "price": 449,
+          "img": "https://eg.hm.com/assets/styles/HNM/14472541/cb9d35f1480ce5c8b0be39ad7fd35ab9f8004ce0/2/image-thumb__3453052__product_listing/70408034bd9792a93abbc8ad322565337f535e24.jpg",
+          "quantity": 2
+        }
+      ],
+      "subtotal": 898,
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 1,
+          "title": "Jersey top",
+          "price": 249,
+          "img": "https://eg.hm.com/assets/styles/HNM/14482498/6103a8463876770c30cdba3535b7be1f333315fe/2/image-thumb__3464789__product_listing/cb91f8f128ac2125e0ec3a008a2e8d2497d15434.jpg",
+          "quantity": 1
+        },
+        {
+          "id": 6,
+          "title": "Velour top",
+          "price": 300,
+          "img": "https://eg.hm.com/assets/styles/HNM/14478215/543d925539f4a3b92a79df2dfe46d5d481e1c7ae/2/image-thumb__3463278__product_listing/c1417d02c7a93e6d2aca7965003b4f7d490f0ae8.jpg",
+          "quantity": 1
+        },
+        {
+          "id": 17,
+          "title": "Regular Fit football shirt",
+          "price": 449,
+          "img": "https://eg.hm.com/assets/styles/HNM/14472541/cb9d35f1480ce5c8b0be39ad7fd35ab9f8004ce0/2/image-thumb__3453052__product_listing/70408034bd9792a93abbc8ad322565337f535e24.jpg",
+          "quantity": 1
+        }
+      ],
+      "subtotal": 998,
+      "id": 7
+    }
+  ]
 }

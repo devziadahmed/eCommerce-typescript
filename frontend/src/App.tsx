@@ -14,8 +14,9 @@ const Login = lazy(() => import("@pages/Login"));
 const Register = lazy(() => import("@pages/Register"));
 const Cart = lazy(() => import("@pages/Cart"));
 const Wishlist = lazy(() => import("@pages/Wishlist"));
-const Profile = lazy(() => import("@pages/Profile"));
+const Account = lazy(() => import("@pages/Account"));
 const Orders = lazy(() => import("@pages/Orders"));
+const AccountLayout = lazy(() => import("@layouts/AccountLayout/AccountLayout"));
 import ErrorPage from "@pages/ErrorPage";
 import { loader as productLoader } from "@pages/Products";
 
@@ -109,14 +110,28 @@ const App = () => {
           ),
         },
         {
-          path: "profile",
+          path: "account",
           element: (
             <ProtectedRoute>
               <PageSuspenseFallback>
-                <Profile />
+                <AccountLayout />
               </PageSuspenseFallback>
             </ProtectedRoute>
           ),
+          children: [
+            {
+              index: true,
+              element: (
+                <PageSuspenseFallback>
+                  <Account />
+                </PageSuspenseFallback>
+              ),
+            },
+            {
+              path: "orders",
+              element: <Orders />,
+            },
+          ],
         },
         {
           path: "orders",
